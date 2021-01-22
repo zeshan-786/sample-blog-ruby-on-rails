@@ -1,0 +1,16 @@
+<h4>Add Comment</h4>
+<%= form_for([@post, @post.comments.build ]) do |form| %>
+  <fieldset>
+    <div class="mb-3">
+      <%= form.label(:username, {:class => 'form-label'}) %>
+      <%= form.text_field(:username, {:class => 'form-control', :placeholder => 'Username'}) %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label(:body, {:class => 'form-label'}) %>
+      <%= form.text_area(:body, {:class => 'form-control', :placeholder => 'Add comment here'}) %>
+    </div>
+    <%= form.submit("Add Comment",{:class => 'btn btn-success'}) %>
+    <%= link_to 'Back', posts_path,  {:class=> "btn btn-secondary"} %> 
+  </fieldset>
+<% end %>

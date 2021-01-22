@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Posts</h1>
+
+<table class='table table-info table-striped table-hover caption-top' >
+  <div class="table-responsive">
+  <caption>List of Posts</caption>
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Body</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <th scope="row"><%= post.title %></th>
+          <td><%= post.body %></td>
+          <td><%= link_to 'Show', post %> | <%= link_to 'Edit', edit_post_path(post) %> | <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </div>
+</table>
+
+<br>
+
+<%= link_to 'New Post', new_post_path, {:class=> "btn btn-primary"} %>
+
+
+# Comments section
+
+<% if @post.comments.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.comments.errors.count, "error") %> prohibited this comment from being saved:</h2>
+
+      <ul>
+        <% @post.comments.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>

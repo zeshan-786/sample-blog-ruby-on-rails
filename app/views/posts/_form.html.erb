@@ -1,0 +1,25 @@
+<%= form_with(model: post) do |form| %>
+  <fieldset>
+    <% if post.errors.any? %>
+        <p class="alert alert-danger" ><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</p>
+
+        <ul>
+          <% post.errors.each do |error| %>
+            <li class="alert alert-danger"><%= error.full_message %></li>
+          <% end %>
+        </ul>
+    <% end %>
+
+    <div class="mb-3">
+      <%= form.label(:title, {:class => 'form-label'}) %>
+      <%= form.text_field(:title, {:class => 'form-control', :placeholder => 'Title'}) %>
+    </div>
+
+    <div class="mb-3">
+      <%= form.label(:body, {:class => 'form-label'})  %>
+      <%= form.text_area(:body, {:class => 'form-control', :placeholder => 'Add post body here'}) %>
+    </div>
+      <%= form.submit({:class => 'btn btn-success'}) %>
+      <%= link_to 'Back', posts_path,  {:class=> "btn btn-secondary"} %> 
+  <fieldset>
+<% end %>

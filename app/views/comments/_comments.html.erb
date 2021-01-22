@@ -1,0 +1,17 @@
+<h4>Comments</h4>
+
+<div>
+  <% @post.comments.each do |comment| %>
+    <div class="card">
+        <div class="card-body">
+        <p class="card-text"> <%= comment.body %>
+          <figcaption class="blockquote-footer">
+            <%= comment.username %>
+          </figcaption>
+        </p>
+          <%= link_to 'X', [comment.post, comment], method: :delete, data: { confirm: 'Are you sure?' }, :class=> "btn btn-danger" %>
+        </div>
+    </div>
+    <br>
+  <% end %>
+</div>
